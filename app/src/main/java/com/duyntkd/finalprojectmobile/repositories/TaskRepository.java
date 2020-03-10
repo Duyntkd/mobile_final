@@ -1,6 +1,7 @@
 package com.duyntkd.finalprojectmobile.repositories;
 
 import com.duyntkd.finalprojectmobile.models.TaskForDetail;
+import com.duyntkd.finalprojectmobile.models.TaskInfoForGroupList;
 import com.duyntkd.finalprojectmobile.models.TaskInfoforHistoryList;
 import com.duyntkd.finalprojectmobile.models.TaskInfoforList;
 
@@ -17,6 +18,16 @@ public class TaskRepository {
         fakeTaskList.add(new TaskInfoforList(2, "Title2", "20/2/2012", "You"));
         fakeTaskList.add(new TaskInfoforList(3, "Title3", "20/2/2012", "You"));
         fakeTaskList.add(new TaskInfoforList(4, "Title4", "20/2/2012", "You"));
+        return fakeTaskList;
+    }
+
+    public static ArrayList<TaskInfoForGroupList> getGroupTasksForDisplay() {
+        ArrayList<TaskInfoForGroupList> fakeTaskList = new ArrayList<>();
+        fakeTaskList.add(new TaskInfoForGroupList(0, "No Title", "20/2/2012", "You", "waiting for accept"));
+        fakeTaskList.add(new TaskInfoForGroupList(1, "Title1", "20/2/2012", "You", "ongoing"));
+        fakeTaskList.add(new TaskInfoForGroupList(2, "Title2", "20/2/2012", "You", "done"));
+        fakeTaskList.add(new TaskInfoForGroupList(3, "Title3", "20/2/2012", "You", "waiting for permit"));
+        fakeTaskList.add(new TaskInfoForGroupList(4, "Title4", "20/2/2012", "You", "finshed"));
         return fakeTaskList;
     }
 

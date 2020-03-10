@@ -1,4 +1,4 @@
-package com.duyntkd.finalprojectmobile.fragments;
+package com.duyntkd.finalprojectmobile.fragments.manager;
 
 
 import android.os.Bundle;
@@ -12,17 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.recycleview_related.RecycleViewAdapterTaskHistory;
+import com.duyntkd.finalprojectmobile.recycleview_related.RecycleViewAdapterGroupTask;
 import com.duyntkd.finalprojectmobile.repositories.TaskRepository;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistoryFragment extends Fragment {
+public class ManageGroupTaskFragment extends Fragment {
     private RecyclerView recycle_view_tasks;
-    private RecycleViewAdapterTaskHistory adapter;
+    private RecycleViewAdapterGroupTask adapter;
 
-    public HistoryFragment() {
+
+    public ManageGroupTaskFragment() {
         // Required empty public constructor
     }
 
@@ -31,9 +32,9 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_history, container, false);
-        recycle_view_tasks = (RecyclerView) rootView.findViewById(R.id.list_tasks_history);
-        adapter = new RecycleViewAdapterTaskHistory(TaskRepository.getTasksHistoryForDisplay(), getActivity());
+        View rootView = inflater.inflate(R.layout.fragment_manage_group_task, container, false);
+        recycle_view_tasks = (RecyclerView) rootView.findViewById(R.id.list_tasks);
+        adapter = new RecycleViewAdapterGroupTask(TaskRepository.getGroupTasksForDisplay(), getActivity());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recycle_view_tasks.setAdapter(adapter);
         recycle_view_tasks.setLayoutManager(layoutManager);

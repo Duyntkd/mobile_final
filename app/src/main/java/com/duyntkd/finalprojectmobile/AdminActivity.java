@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.duyntkd.finalprojectmobile.fragments.ManageUserFragment;
+import com.duyntkd.finalprojectmobile.fragments.admin.ManageUserFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class AdminActivity extends AppCompatActivity {

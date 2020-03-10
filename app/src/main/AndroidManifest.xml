@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskDetailHistoryActivity"></activity>
+        <activity android:name=".TaskDetailForManagerActivity"></activity>
+        <activity android:name=".TaskDetailHistoryActivity" />
         <activity android:name=".TaskDetailActivity" />
         <activity android:name=".ManagerActivity" />
         <activity android:name=".EmployeeActivity" />

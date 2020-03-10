@@ -1,4 +1,4 @@
-package com.duyntkd.finalprojectmobile.fragments;
+package com.duyntkd.finalprojectmobile.fragments.admin;
 
 
 import android.os.Bundle;

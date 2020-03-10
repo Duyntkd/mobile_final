@@ -10,8 +10,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.duyntkd.finalprojectmobile.fragments.HistoryFragment;
-import com.duyntkd.finalprojectmobile.fragments.ManageTaskFragment;
+import com.duyntkd.finalprojectmobile.fragments.employee.HistoryFragment;
+import com.duyntkd.finalprojectmobile.fragments.employee.ManageTaskFragment;
 import com.duyntkd.finalprojectmobile.fragments.ProfileFragment;
 import com.google.android.material.tabs.TabLayout;
 
