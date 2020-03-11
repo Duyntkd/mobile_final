@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.models.User;
+import com.duyntkd.finalprojectmobile.models.users.User;
 
 import java.util.ArrayList;
 

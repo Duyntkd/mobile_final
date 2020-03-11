@@ -11,7 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.duyntkd.finalprojectmobile.fragments.employee.HistoryFragment;
-import com.duyntkd.finalprojectmobile.fragments.employee.ManageTaskFragment;
+import com.duyntkd.finalprojectmobile.fragments.employee.ManageCurrentTaskFragment;
 import com.duyntkd.finalprojectmobile.fragments.ProfileFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -41,7 +41,7 @@ public class EmployeeActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new ManageTaskFragment();
+                    return new ManageCurrentTaskFragment();
                 case 1:
                     return new HistoryFragment();
                 case 2:

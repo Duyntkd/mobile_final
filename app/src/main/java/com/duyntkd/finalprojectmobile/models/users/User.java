@@ -1,4 +1,4 @@
-package com.duyntkd.finalprojectmobile.models;
+package com.duyntkd.finalprojectmobile.models.users;
 
 public class User {
     private int id;

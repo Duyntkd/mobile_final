@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.duyntkd.finalprojectmobile.models.TaskForDetail;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
 import com.duyntkd.finalprojectmobile.repositories.TaskRepository;
 
 public class TaskDetailHistoryActivity extends AppCompatActivity {

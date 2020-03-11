@@ -18,12 +18,12 @@ import com.duyntkd.finalprojectmobile.repositories.TaskRepository;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ManageGroupTaskFragment extends Fragment {
+public class ManageCurrentGroupTaskFragment extends Fragment {
     private RecyclerView recycle_view_tasks;
     private RecycleViewAdapterGroupTask adapter;
 
 
-    public ManageGroupTaskFragment() {
+    public ManageCurrentGroupTaskFragment() {
         // Required empty public constructor
     }
 

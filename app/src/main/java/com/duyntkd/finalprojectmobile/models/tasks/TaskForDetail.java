@@ -1,4 +1,4 @@
-package com.duyntkd.finalprojectmobile.models;
+package com.duyntkd.finalprojectmobile.models.tasks;
 
 
 import java.io.Serializable;

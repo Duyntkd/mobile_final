@@ -1,26 +1,18 @@
-package com.duyntkd.finalprojectmobile.models;
+package com.duyntkd.finalprojectmobile.models.tasks;
 
-public class TaskInfoforHistoryList {
+public class TaskInfoForGroupList {
     private int id;
     private String title;
     private String endDate;
-    private String assigner;
+    private String assignee;
     private String status;
 
 
-    public TaskInfoforHistoryList(int id, String title, String endDate, String assigner, String status) {
+    public TaskInfoForGroupList(int id, String title, String endDate, String assignee, String status) {
         this.id = id;
         this.title = title;
         this.endDate = endDate;
-        this.assigner = assigner;
-        this.status = status;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
+        this.assignee = assignee;
         this.status = status;
     }
 
@@ -48,11 +40,19 @@ public class TaskInfoforHistoryList {
         this.endDate = endDate;
     }
 
-    public String getAssigner() {
-        return assigner;
+    public String getAssignee() {
+        return assignee;
     }
 
-    public void setAssigner(String assigner) {
-        this.assigner = assigner;
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

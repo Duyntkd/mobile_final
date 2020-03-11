@@ -1,7 +1,7 @@
 package com.duyntkd.finalprojectmobile.repositories;
 
 import com.duyntkd.finalprojectmobile.LoginActivity;
-import com.duyntkd.finalprojectmobile.models.User;
+import com.duyntkd.finalprojectmobile.models.users.User;
 
 import java.util.ArrayList;
 

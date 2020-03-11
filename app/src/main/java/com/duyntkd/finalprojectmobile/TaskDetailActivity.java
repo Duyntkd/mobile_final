@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import com.duyntkd.finalprojectmobile.models.TaskForDetail;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
 import com.duyntkd.finalprojectmobile.repositories.TaskRepository;
 
 public class TaskDetailActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class TaskDetailActivity extends AppCompatActivity {
     private TextView txtId;
     private TextView txtTitle;
     private TextView txtContent;
-    private TextView edtSolutionDescription;
+    private EditText edtSolutionDescription;
     private TextView txtAssignerId;
     private TextView txtAssignerName;
     private TextView txtStartDate;

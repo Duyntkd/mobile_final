@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.duyntkd.finalprojectmobile.fragments.manager.ManageGroupTaskFragment;
+import com.duyntkd.finalprojectmobile.fragments.manager.ManageCurrentGroupTaskFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class ManagerActivity extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class ManagerActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new ManageGroupTaskFragment();
+                    return new ManageCurrentGroupTaskFragment();
             }
             return null;
         }

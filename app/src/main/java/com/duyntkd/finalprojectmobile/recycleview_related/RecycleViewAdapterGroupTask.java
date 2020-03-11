@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.duyntkd.finalprojectmobile.R;
 import com.duyntkd.finalprojectmobile.TaskDetailForManagerActivity;
-import com.duyntkd.finalprojectmobile.models.TaskInfoForGroupList;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoForGroupList;
 
 import java.util.ArrayList;
 

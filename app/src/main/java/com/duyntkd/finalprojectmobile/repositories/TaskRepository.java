@@ -1,13 +1,14 @@
 package com.duyntkd.finalprojectmobile.repositories;
 
-import com.duyntkd.finalprojectmobile.models.TaskForDetail;
-import com.duyntkd.finalprojectmobile.models.TaskInfoForGroupList;
-import com.duyntkd.finalprojectmobile.models.TaskInfoforHistoryList;
-import com.duyntkd.finalprojectmobile.models.TaskInfoforList;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskConfirmation;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetailManager;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoForGroupList;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoforHistoryList;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoforList;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class TaskRepository {
 
@@ -45,6 +46,16 @@ public class TaskRepository {
     public static TaskForDetail getTasksDetail(int taskId) {
         TaskForDetail result = new TaskForDetail(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "ThanhPC", new Date(), new Date());
         return result;
+    }
+
+    public static TaskForDetailManager getTasksDetailManager(int taskId) {
+        TaskForDetailManager result = new TaskForDetailManager(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "NTKD", new Date(), new Date());
+        return result;
+    }
+
+    public static boolean completeATask(TaskConfirmation confirmation) {
+        if (confirmation != null) return true;
+        return false;
     }
 
 
