@@ -13,12 +13,15 @@ import android.os.Bundle;
 import com.duyntkd.finalprojectmobile.fragments.admin.ManageUserFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends AbstractUserActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        userId = this.getIntent().getExtras().getInt(LoginActivity.USER_ID_TEXT);
+        role = this.getIntent().getExtras().getString(LoginActivity.USER_ROLE_TEXT);
+        groupId = this.getIntent().getExtras().getInt(LoginActivity.USER_GROUP_ID_TEXT);
 
         AdminPagerAdapter adminPagerAdapter = new AdminPagerAdapter(this.getSupportFragmentManager());
 

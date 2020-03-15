@@ -45,37 +45,6 @@ public class AuthenticationService extends AsyncTask<String, Void, String>{
     }
 
 
-
-    /*  public Object requestLogin(String userName, String password) {
-         result = null;
-         String url = "https://10.0.2.2:5001/api/authen/login";
-         AsyncHttpClient client = new AsyncHttpClient();
-         RequestParams params = new RequestParams();
-         params.put("Username", userName);
-         params.put("Password", password);
-         client.get(url, params, new JsonHttpResponseHandler() {
-             @Override
-             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                 result = response.toString();
-             }
-
-             @Override
-             public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
-                 Log.e("Error message;: ", "Something wrong");
-             }
-         });
-        return result;
-    }*/
-
-   /* public Object requestLogin(String userName, String password) {
-        userName = userName.trim();
-        password = password.trim();
-        if(userName.isEmpty() || password.isEmpty()) return null;
-        if (userName.equals(LoginActivity.ROLE_ADMIN)) return LoginActivity.ROLE_ADMIN;
-        if (userName.equals(LoginActivity.ROLE_MANAGER)) return LoginActivity.ROLE_MANAGER;
-        return LoginActivity.ROLE_EMPLOYEE;
-    }*/
-
     public Object requestLogin(String userName, String password) {
 
         return result;
@@ -107,7 +76,7 @@ public class AuthenticationService extends AsyncTask<String, Void, String>{
                             try {
                                 result = response.getString("role").toString();
                             } catch (Exception e) {
-                                Log.e("Response error: ", e.getMessage());
+                                e.printStackTrace();
                             }
 
                         }
@@ -115,7 +84,7 @@ public class AuthenticationService extends AsyncTask<String, Void, String>{
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("Error message;: ", error.getMessage());
+                            error.printStackTrace();
                         }
                     }
 

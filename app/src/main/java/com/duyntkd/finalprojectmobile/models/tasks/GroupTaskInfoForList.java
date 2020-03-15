@@ -1,6 +1,6 @@
 package com.duyntkd.finalprojectmobile.models.tasks;
 
-public class TaskInfoForGroupList {
+public class GroupTaskInfoForList {
     private int id;
     private String title;
     private String endDate;
@@ -8,7 +8,7 @@ public class TaskInfoForGroupList {
     private String status;
 
 
-    public TaskInfoForGroupList(int id, String title, String endDate, String assignee, String status) {
+    public GroupTaskInfoForList(int id, String title, String endDate, String assignee, String status) {
         this.id = id;
         this.title = title;
         this.endDate = endDate;

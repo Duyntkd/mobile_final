@@ -1,6 +1,5 @@
 package com.duyntkd.finalprojectmobile.recycleview_related;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,50 +10,52 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.duyntkd.finalprojectmobile.AbstractUserActivity;
+import com.duyntkd.finalprojectmobile.LoginActivity;
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.TaskDetailForManagerActivity;
-import com.duyntkd.finalprojectmobile.models.tasks.GroupTaskInfoForList;
+import com.duyntkd.finalprojectmobile.SelfTaskEditActivity;
+import com.duyntkd.finalprojectmobile.fragments.TaskManagementFragment;
+import com.duyntkd.finalprojectmobile.models.tasks.SelfTaskInfoForList;
 
 import java.util.ArrayList;
 
-public class RecycleViewAdapterGroupTask extends RecyclerView.Adapter<RecycleViewAdapterGroupTask.ViewHolder> {
+public class RecycleViewAdapterPendingTask extends RecyclerView.Adapter<RecycleViewAdapterPendingTask.ViewHolder> {
 
-    private ArrayList<GroupTaskInfoForList> taskList;
-    private Activity currentActivity;
+    private ArrayList<SelfTaskInfoForList> taskList;
+    private AbstractUserActivity currentActivity;
 
-    public RecycleViewAdapterGroupTask(ArrayList<GroupTaskInfoForList> taskList, Activity currentActivity) {
+    public RecycleViewAdapterPendingTask(ArrayList<SelfTaskInfoForList> taskList, AbstractUserActivity currentActivity) {
         this.taskList = taskList;
         this.currentActivity = currentActivity;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecycleViewAdapterPendingTask.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycle_item_task_group, parent, false);
-        return new ViewHolder(cardView);
+                .inflate(R.layout.recycle_item_task_pending, parent, false);
+        return new RecycleViewAdapterPendingTask.ViewHolder(cardView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecycleViewAdapterPendingTask.ViewHolder holder, int position) {
         CardView cardView = holder.cardView;
         TextView txtId = cardView.findViewById(R.id.txtId);
         TextView txtTitle = cardView.findViewById(R.id.txtTitle);
         TextView txtDeadline = cardView.findViewById(R.id.txtDeadline);
-        TextView txtAssignee = cardView.findViewById(R.id.txtAssignee);
         TextView txtStatus = cardView.findViewById(R.id.txtStatus);
 
         txtId.setText(taskList.get(position).getId() + "");
         txtTitle.setText(taskList.get(position).getTitle());
         txtDeadline.setText(taskList.get(position).getEndDate().toString());
-        txtAssignee.setText(taskList.get(position).getAssignee());
         txtStatus.setText(taskList.get(position).getStatus());
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentActivity, TaskDetailForManagerActivity.class);
-                intent.putExtra(TaskDetailForManagerActivity.TASK_ID_STRING, ((TextView)v.findViewById(R.id.txtId)).getText().toString());
+                Intent intent = new Intent(currentActivity, SelfTaskEditActivity.class);
+                intent.putExtra(TaskManagementFragment.TASK_ID_STRING, Integer.parseInt(((TextView)v.findViewById(R.id.txtId)).getText().toString()));
+                intent.putExtra(LoginActivity.USER_ID_TEXT, currentActivity.getUserId());
                 currentActivity.startActivity(intent);
             }
         });

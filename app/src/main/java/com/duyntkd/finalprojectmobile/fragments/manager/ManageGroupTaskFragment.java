@@ -1,4 +1,4 @@
-package com.duyntkd.finalprojectmobile.fragments.employee;
+package com.duyntkd.finalprojectmobile.fragments.manager;
 
 
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,23 +20,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.duyntkd.finalprojectmobile.AdminActivity;
-import com.duyntkd.finalprojectmobile.EmployeeActivity;
 import com.duyntkd.finalprojectmobile.LoginActivity;
 import com.duyntkd.finalprojectmobile.ManagerActivity;
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoforList;
-import com.duyntkd.finalprojectmobile.presenter.CurrentUser;
-import com.duyntkd.finalprojectmobile.recycleview_related.RecycleViewAdapterTask;
-import com.duyntkd.finalprojectmobile.repositories.TaskRepository;
+import com.duyntkd.finalprojectmobile.TaskAssignmentActivity;
+import com.duyntkd.finalprojectmobile.models.tasks.GroupTaskInfoForList;
+import com.duyntkd.finalprojectmobile.recycleview_related.RecycleViewAdapterGroupTask;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -43,45 +38,45 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ManageCurrentTaskFragment extends Fragment {
+public class ManageGroupTaskFragment extends Fragment {
     private RecyclerView recycle_view_tasks;
-    private RecycleViewAdapterTask adapter;
-    private String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/tasks/current";
+    private RecycleViewAdapterGroupTask adapter;
+    private String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/tasks/group";
+    private ArrayList<GroupTaskInfoForList> resultForCurrentTasks;
     private View rootView;
-    private ArrayList<TaskInfoforList> resultForCurrentTasks;
+    private Button btnCreateNewTask;
 
-
-    public ManageCurrentTaskFragment() {
+    public ManageGroupTaskFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onStart() {
         super.onStart();
-        recycle_view_tasks = (RecyclerView) rootView.findViewById(R.id.list_tasks);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        EmployeeActivity currentActivity = (EmployeeActivity) this.getActivity();
-        int userId = currentActivity.getUserId();
+        ManagerActivity currentActivity = (ManagerActivity) this.getActivity();
+        int group = currentActivity.getGroupId();
         try {
             JsonArrayRequest arrayRequest = new JsonArrayRequest(
                     Request.Method.GET,
-                    requestUrl + "?userId=" +  userId,
+                    requestUrl + "?groupId=" + group,
                     null,
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
                             try {
                                 Gson gson = new Gson();
-                                Type listType = new TypeToken<ArrayList<TaskInfoforList>>(){}.getType();
-                                ArrayList<TaskInfoforList> listCurrentTask = gson.fromJson(response.toString(), listType);
+                                Type listType = new TypeToken<ArrayList<GroupTaskInfoForList>>() {
+                                }.getType();
+                                ArrayList<GroupTaskInfoForList> listCurrentTask = gson.fromJson(response.toString(), listType);
                                 resultForCurrentTasks = listCurrentTask;
-                                adapter = new RecycleViewAdapterTask(resultForCurrentTasks, getActivity());
+                                recycle_view_tasks = (RecyclerView) rootView.findViewById(R.id.list_tasks);
+                                adapter = new RecycleViewAdapterGroupTask(resultForCurrentTasks, getActivity());
                                 LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                                 recycle_view_tasks.setAdapter(adapter);
                                 recycle_view_tasks.setLayoutManager(layoutManager);
                             } catch (Exception e) {
-                               e.printStackTrace();
+                                e.printStackTrace();
                             }
 
                         }
@@ -103,11 +98,22 @@ public class ManageCurrentTaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_manage_task, container, false);
+        // Inflate the layout for this fragment
+        rootView = inflater.inflate(R.layout.fragment_manage_group_task, container, false);
+        btnCreateNewTask = rootView.findViewById(R.id.btnCreateNewTask);
+        btnCreateNewTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManagerActivity currentActivity = (ManagerActivity) getActivity();
+                Intent intent = new Intent(getActivity(), TaskAssignmentActivity.class);
+                intent.putExtra(LoginActivity.USER_ID_TEXT, currentActivity.getUserId());
+                intent.putExtra(LoginActivity.USER_GROUP_ID_TEXT, currentActivity.getGroupId());
+                startActivity(intent);
+
+            }
+        });
+
         return rootView;
     }
-
-
-
 
 }

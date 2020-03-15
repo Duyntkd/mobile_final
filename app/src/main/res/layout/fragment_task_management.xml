@@ -6,13 +6,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.employee.ManageCurrentTaskFragment"
+        tools:context=".fragments.employee.ManageGroupTaskFragment"
         android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create new task"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/btnCreateNewTask"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Current task list"
+            android:text="Your task list"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
@@ -28,8 +37,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/list_tasks"
-            android:layout_marginBottom="50dp"/>
+            android:id="@+id/list_tasks"/>
 
     </LinearLayout>
 </ScrollView>

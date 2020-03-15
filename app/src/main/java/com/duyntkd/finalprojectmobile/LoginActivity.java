@@ -16,7 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.duyntkd.finalprojectmobile.presenter.CurrentUser;
 import com.duyntkd.finalprojectmobile.services.AuthenticationService;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     public static final String ROLE_ADMIN = "Admin";
     public static final String ROLE_MANAGER = "Manager";
     public static final String ROLE_EMPLOYEE = "Employee";
+    public static final String USER_ID_TEXT = "userId";
+    public static final String USER_ROLE_TEXT = "userRole";
+    public static final String USER_GROUP_ID_TEXT = "groupId";
 
 
     @Override
@@ -66,8 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                String role = response.getString("role").toString();
-                                if (role != "") {
+                                String role = response.getJSONObject("user").getJSONObject("role").getString("roleName");
+                                JSONObject user = response.getJSONObject("user");
+                                if (response != null) {
                                     switch (role.toString()) {
                                         case ROLE_ADMIN:
                                             intent = new Intent(LoginActivity.this, AdminActivity.class);
@@ -79,15 +85,18 @@ public class LoginActivity extends AppCompatActivity {
                                             intent = new Intent(LoginActivity.this, EmployeeActivity.class);
                                             break;
                                     }
+                                    intent.putExtra(USER_ID_TEXT, response.getJSONObject("user").getInt("id"));
+                                    intent.putExtra(USER_GROUP_ID_TEXT, response.getJSONObject("user").getInt("groupId"));
+                                    intent.putExtra(USER_ROLE_TEXT, response.getJSONObject("user").getJSONObject("role").getString("roleName"));
                                     LoginActivity.this.startActivity(intent);
-
+                                    //finish();
                                 } else {
                                     TextView txtErrorMsg = (TextView)LoginActivity.this.findViewById(R.id.txtErrorMsg);
                                     txtErrorMsg.setText("Login failed please check your username and password!");
                                     txtErrorMsg.setVisibility(View.VISIBLE);
                                 }
                             } catch (Exception e) {
-                                Log.e("Response error: ", e.getMessage());
+                                e.printStackTrace();
                             }
 
                         }
@@ -95,14 +104,14 @@ public class LoginActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("Error message;: ", error.getMessage());
+                            error.printStackTrace();
                         }
                     }
 
             );
             requestQueue.add(objectRequest);
         } catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
         }
     }
 

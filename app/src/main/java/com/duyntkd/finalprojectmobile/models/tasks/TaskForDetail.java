@@ -2,7 +2,6 @@ package com.duyntkd.finalprojectmobile.models.tasks;
 
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class TaskForDetail implements Serializable {
     private int id;
@@ -11,10 +10,10 @@ public class TaskForDetail implements Serializable {
     private String  solutionDescription;
     private int assignerId;
     private String assignerName;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
 
-    public TaskForDetail(int id, String title, String content, String solutionDescription, int assignerId, String assignerName, Date startDate, Date endDate) {
+    public TaskForDetail(int id, String title, String content, String solutionDescription, int assignerId, String assignerName, String startDate, String endDate) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -73,19 +72,19 @@ public class TaskForDetail implements Serializable {
         this.assignerName = assignerName;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 }

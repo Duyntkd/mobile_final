@@ -3,7 +3,7 @@ package com.duyntkd.finalprojectmobile.repositories;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskConfirmation;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetailManager;
-import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoForGroupList;
+import com.duyntkd.finalprojectmobile.models.tasks.GroupTaskInfoForList;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoforHistoryList;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskInfoforList;
 
@@ -22,13 +22,13 @@ public class TaskRepository {
         return fakeTaskList;
     }
 
-    public static ArrayList<TaskInfoForGroupList> getGroupTasksForDisplay() {
-        ArrayList<TaskInfoForGroupList> fakeTaskList = new ArrayList<>();
-        fakeTaskList.add(new TaskInfoForGroupList(0, "No Title", "20/2/2012", "You", "waiting for accept"));
-        fakeTaskList.add(new TaskInfoForGroupList(1, "Title1", "20/2/2012", "You", "ongoing"));
-        fakeTaskList.add(new TaskInfoForGroupList(2, "Title2", "20/2/2012", "You", "done"));
-        fakeTaskList.add(new TaskInfoForGroupList(3, "Title3", "20/2/2012", "You", "waiting for permit"));
-        fakeTaskList.add(new TaskInfoForGroupList(4, "Title4", "20/2/2012", "You", "finshed"));
+    public static ArrayList<GroupTaskInfoForList> getGroupTasksForDisplay() {
+        ArrayList<GroupTaskInfoForList> fakeTaskList = new ArrayList<>();
+        fakeTaskList.add(new GroupTaskInfoForList(0, "No Title", "20/2/2012", "You", "waiting for accept"));
+        fakeTaskList.add(new GroupTaskInfoForList(1, "Title1", "20/2/2012", "You", "ongoing"));
+        fakeTaskList.add(new GroupTaskInfoForList(2, "Title2", "20/2/2012", "You", "done"));
+        fakeTaskList.add(new GroupTaskInfoForList(3, "Title3", "20/2/2012", "You", "waiting for permit"));
+        fakeTaskList.add(new GroupTaskInfoForList(4, "Title4", "20/2/2012", "You", "finshed"));
         return fakeTaskList;
     }
 
@@ -44,12 +44,12 @@ public class TaskRepository {
 
 
     public static TaskForDetail getTasksDetail(int taskId) {
-        TaskForDetail result = new TaskForDetail(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "ThanhPC", new Date(), new Date());
+        TaskForDetail result = new TaskForDetail(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "ThanhPC", "aaaa", "aaaaa");
         return result;
     }
 
     public static TaskForDetailManager getTasksDetailManager(int taskId) {
-        TaskForDetailManager result = new TaskForDetailManager(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "NTKD", new Date(), new Date());
+        TaskForDetailManager result = new TaskForDetailManager(taskId, "Very important task", "Blah blah blah... blahhhhhh!", "No description",0 , "NTKD", "aaaa", "aaaa");
         return result;
     }
 

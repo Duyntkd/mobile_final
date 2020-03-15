@@ -10,15 +10,23 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.duyntkd.finalprojectmobile.fragments.manager.ManageCurrentGroupTaskFragment;
+import com.duyntkd.finalprojectmobile.fragments.manager.ManageGroupTaskFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class ManagerActivity extends AppCompatActivity {
+public class ManagerActivity extends AbstractUserActivity {
+
+    public int getGroupId() {
+        return groupId;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
+
+        userId = this.getIntent().getExtras().getInt(LoginActivity.USER_ID_TEXT);
+        role = this.getIntent().getExtras().getString(LoginActivity.USER_ROLE_TEXT);
+        groupId = this.getIntent().getExtras().getInt(LoginActivity.USER_GROUP_ID_TEXT);
 
         ManagerPagerAdapter employeePagerAdapter = new ManagerPagerAdapter(this.getSupportFragmentManager());
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -40,7 +48,7 @@ public class ManagerActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new ManageCurrentGroupTaskFragment();
+                    return new ManageGroupTaskFragment();
             }
             return null;
         }

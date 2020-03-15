@@ -10,17 +10,20 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.duyntkd.finalprojectmobile.fragments.TaskManagementFragment;
 import com.duyntkd.finalprojectmobile.fragments.employee.HistoryFragment;
 import com.duyntkd.finalprojectmobile.fragments.employee.ManageCurrentTaskFragment;
 import com.duyntkd.finalprojectmobile.fragments.ProfileFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class EmployeeActivity extends AppCompatActivity {
-
+public class EmployeeActivity extends AbstractUserActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
+        userId = this.getIntent().getExtras().getInt(LoginActivity.USER_ID_TEXT);
+        role = this.getIntent().getExtras().getString(LoginActivity.USER_ROLE_TEXT);
+        groupId = this.getIntent().getExtras().getInt(LoginActivity.USER_GROUP_ID_TEXT);
 
         EmployeePagerAdapter employeePagerAdapter = new EmployeePagerAdapter(this.getSupportFragmentManager());
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -45,6 +48,8 @@ public class EmployeeActivity extends AppCompatActivity {
                 case 1:
                     return new HistoryFragment();
                 case 2:
+                    return new TaskManagementFragment();
+                case 3:
                     return new ProfileFragment();
             }
             return null;
@@ -52,7 +57,7 @@ public class EmployeeActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Nullable
@@ -60,10 +65,12 @@ public class EmployeeActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Manage Tasks";
+                    return "Current Tasks";
                 case 1:
                     return "View History";
                 case 2:
+                    return "Self Tasks";
+                case 3:
                     return "Profile";
             }
             return "";
