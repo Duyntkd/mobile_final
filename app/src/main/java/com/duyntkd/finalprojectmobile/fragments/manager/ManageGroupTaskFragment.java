@@ -105,8 +105,9 @@ public class ManageGroupTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ManagerActivity currentActivity = (ManagerActivity) getActivity();
+                String userId = currentActivity.getUserId() + "";
                 Intent intent = new Intent(getActivity(), TaskAssignmentActivity.class);
-                intent.putExtra(LoginActivity.USER_ID_TEXT, currentActivity.getUserId());
+                intent.putExtra(LoginActivity.USER_ID_TEXT, userId);
                 intent.putExtra(LoginActivity.USER_GROUP_ID_TEXT, currentActivity.getGroupId());
                 startActivity(intent);
 

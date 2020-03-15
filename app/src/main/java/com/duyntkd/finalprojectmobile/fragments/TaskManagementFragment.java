@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.duyntkd.finalprojectmobile.AbstractUserActivity;
 import com.duyntkd.finalprojectmobile.LoginActivity;
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.SelfTaskEditActivity;
+import com.duyntkd.finalprojectmobile.TaskAssignmentActivity;
 import com.duyntkd.finalprojectmobile.models.tasks.SelfTaskInfoForList;
 import com.duyntkd.finalprojectmobile.recycleview_related.RecycleViewAdapterPendingTask;
 import com.google.gson.Gson;
@@ -107,8 +107,10 @@ public class TaskManagementFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AbstractUserActivity currentActivity = (AbstractUserActivity) getActivity();
-                Intent intent = new Intent(getActivity(), SelfTaskEditActivity.class);
-                intent.putExtra(LoginActivity.USER_ID_TEXT, currentActivity.getUserId());
+                String userId = currentActivity.getUserId() + "";
+                Intent intent = new Intent(getActivity(), TaskAssignmentActivity.class);
+                intent.putExtra(LoginActivity.USER_ID_TEXT, userId);
+                intent.putExtra(TaskAssignmentActivity.IS_A_SELF_TASK, true);
                 startActivity(intent);
             }
         });

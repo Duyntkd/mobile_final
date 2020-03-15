@@ -3,9 +3,7 @@ package com.duyntkd.finalprojectmobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -28,16 +26,28 @@ import java.util.GregorianCalendar;
 
 public class TaskAssignmentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
+    public static final String IS_A_SELF_TASK = "isASelfTask";
+
     private Button btnsetDate;
     private TextView txtDeadline;
-    private int userId;
+    private TextView txtTaskId;
+    private TextView txtTaskIdLabel;
+    private TextView txtAssigneeIdLabel;
+    private String userId;
     private int groupId;
     private EditText edtAssigneeId;
     private EditText edtTaskContent;
     private EditText edtTitle;
+    private boolean isASelfTask;
+    private int assigneeId;
+    private String taskStatus;
+
+    public boolean isASelfTask() {
+        return isASelfTask;
+    }
 
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -49,13 +59,29 @@ public class TaskAssignmentActivity extends AppCompatActivity implements DatePic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assign_task_to_new_one);
-
-
         btnsetDate = findViewById(R.id.btnSetDate);
         txtDeadline = findViewById(R.id.txtDeadline);
         edtAssigneeId = findViewById(R.id.edtAssigneeId);
         edtTaskContent = findViewById(R.id.edtContent);
         edtTitle = findViewById(R.id.edtTitle);
+        txtTaskId = findViewById(R.id.txtTaskId);
+        txtTaskIdLabel = findViewById(R.id.txtTaskIdLabel);
+        txtAssigneeIdLabel = findViewById(R.id.txtAssigneeIdLabel);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userId = getIntent().getExtras().getString(LoginActivity.USER_ID_TEXT);
+        isASelfTask = getIntent().getExtras().getBoolean(IS_A_SELF_TASK);
+        if(isASelfTask) {
+            txtTaskId.setVisibility(View.GONE);
+            txtTaskIdLabel.setVisibility(View.GONE);
+            txtAssigneeIdLabel.setVisibility(View.GONE);
+            edtAssigneeId.setVisibility(View.GONE);
+        }
     }
 
     public void clickToSetDate(View view) {
@@ -84,20 +110,26 @@ public class TaskAssignmentActivity extends AppCompatActivity implements DatePic
     }
 
     public void clickToAssignTask(View view) {
-        userId = this.getIntent().getExtras().getInt(LoginActivity.USER_ID_TEXT);
-
-        int assigneeId = Integer.parseInt(edtAssigneeId.getText().toString());
+        if(isASelfTask) {
+            assigneeId = Integer.parseInt(userId);
+            taskStatus = "waiting";
+        } else {
+            assigneeId = Integer.parseInt(edtAssigneeId.getText().toString());
+            taskStatus = "ongoing";
+        }
         String taskContent = edtTaskContent.getText().toString();
         String deadline = txtDeadline.getText().toString();
         String title = edtTitle.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         try {
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("assignerId", userId);
+
+            jsonBody.put("assignerId", Integer.parseInt(userId));
             jsonBody.put("assigneeId", assigneeId);
             jsonBody.put("content", taskContent);
             jsonBody.put("deadline", deadline);
             jsonBody.put("title", title);
+            jsonBody.put("status", taskStatus);
             String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/tasks/assign";
             JsonObjectRequest objectRequest = new JsonObjectRequest(
                     Request.Method.POST,
