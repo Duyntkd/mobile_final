@@ -2,6 +2,7 @@ package com.duyntkd.finalprojectmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public abstract class AbstractUserActivity extends AppCompatActivity {
@@ -27,5 +28,10 @@ public abstract class AbstractUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    public void logout() {
+        Intent intent = new Intent(AbstractUserActivity.this, LoginActivity.class);
+        finish();
+        startActivity(intent);
+    }
 
 }

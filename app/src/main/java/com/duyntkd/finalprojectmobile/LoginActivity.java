@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra(USER_GROUP_ID_TEXT, response.getJSONObject("user").getInt("groupId"));
                                     intent.putExtra(USER_ROLE_TEXT, response.getJSONObject("user").getJSONObject("role").getString("roleName"));
                                     LoginActivity.this.startActivity(intent);
-                                    //finish();
+                                    finish();
                                 } else {
                                     TextView txtErrorMsg = (TextView)LoginActivity.this.findViewById(R.id.txtErrorMsg);
                                     txtErrorMsg.setText("Login failed please check your username and password!");
