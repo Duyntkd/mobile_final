@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter username"
-        android:id="@+id/edtUsername"
+        android:id="@+id/txtUsername"
         android:layout_marginTop="16dp"/>
 
     <EditText

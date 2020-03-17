@@ -3,9 +3,7 @@ package com.duyntkd.finalprojectmobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,11 +14,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.duyntkd.finalprojectmobile.presenter.CurrentUser;
 import com.duyntkd.finalprojectmobile.services.AuthenticationService;
-import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onclickLogin(View view) {
-        String userName = ((EditText) findViewById(R.id.edtUsername)).getText().toString();
+        String userName = ((EditText) findViewById(R.id.txtUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.edtPassword)).getText().toString();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

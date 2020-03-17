@@ -23,7 +23,7 @@ public class TaskConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_task_complete);
         taskId = getIntent().getExtras().getInt(TaskDetailForManagerActivity.TASK_ID_STRING);
-        TextView txtTaskId = findViewById(R.id.txtTaskId);
+        TextView txtTaskId = findViewById(R.id.txtUserId);
         txtTaskId.setText(taskId + "");
 
 

@@ -19,7 +19,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.duyntkd.finalprojectmobile.fragments.TaskManagementFragment;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
-import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetailManager;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -94,9 +93,9 @@ public class SelfTaskEditActivity extends AppCompatActivity implements DatePicke
         setContentView(R.layout.activity_sef_task_edit);
         btnsetDate = findViewById(R.id.btnSetDate);
         txtDeadline = findViewById(R.id.txtDeadline);
-        edtTaskContent = findViewById(R.id.edtContent);
-        edtTitle = findViewById(R.id.edtTitle);
-        txtId = findViewById(R.id.txtTaskId);
+        edtTaskContent = findViewById(R.id.edtPassword);
+        edtTitle = findViewById(R.id.edtName);
+        txtId = findViewById(R.id.txtUserId);
         taskId = getIntent().getExtras().getInt(TaskManagementFragment.TASK_ID_STRING);
 
     }

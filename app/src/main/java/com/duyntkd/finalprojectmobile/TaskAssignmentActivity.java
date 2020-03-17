@@ -62,10 +62,10 @@ public class TaskAssignmentActivity extends AppCompatActivity implements DatePic
         btnsetDate = findViewById(R.id.btnSetDate);
         txtDeadline = findViewById(R.id.txtDeadline);
         edtAssigneeId = findViewById(R.id.edtAssigneeId);
-        edtTaskContent = findViewById(R.id.edtContent);
-        edtTitle = findViewById(R.id.edtTitle);
-        txtTaskId = findViewById(R.id.txtTaskId);
-        txtTaskIdLabel = findViewById(R.id.txtTaskIdLabel);
+        edtTaskContent = findViewById(R.id.edtPassword);
+        edtTitle = findViewById(R.id.edtName);
+        txtTaskId = findViewById(R.id.txtUserId);
+        txtTaskIdLabel = findViewById(R.id.txtUserIdLabel);
         txtAssigneeIdLabel = findViewById(R.id.txtAssigneeIdLabel);
 
 

@@ -5,16 +5,24 @@ public class User {
     private String username;
     private String name;
     private String password;
-    private String role;
+    private int roleId;
+    private String roleName;
+    private String groupName;
     private int groupId;
+    private String phone;
+    private String status;
 
-    public User(int id, String username, String name, String password, String role, int groupId) {
+    public User(int id, String username, String name, String password, int roleId, String roleName, String groupName, int groupId, String phone, String status) {
         this.id = id;
         this.username = username;
         this.name = name;
         this.password = password;
-        this.role = role;
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.groupName = groupName;
         this.groupId = groupId;
+        this.phone = phone;
+        this.status = status;
     }
 
     public int getId() {
@@ -49,12 +57,28 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public int getGroupId() {
@@ -63,5 +87,21 @@ public class User {
 
     public void setGroupId(int groupId) {
         this.groupId = groupId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

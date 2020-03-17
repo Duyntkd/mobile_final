@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AbstractUserActivity"></activity>
+        <activity android:name=".UserEditActivity"></activity>
+        <activity android:name=".AbstractUserActivity" />
         <activity android:name=".SelfTaskEditActivity" />
         <activity android:name=".TaskAssignmentActivity" />
         <activity android:name=".TaskConfirmationActivity" />
