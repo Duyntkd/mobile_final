@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,6 +22,7 @@ import com.duyntkd.finalprojectmobile.fragments.admin.ManageUserFragment;
 import com.duyntkd.finalprojectmobile.models.groups.Group;
 import com.duyntkd.finalprojectmobile.models.roles.Role;
 import com.duyntkd.finalprojectmobile.models.users.User;
+import com.duyntkd.finalprojectmobile.util.ErrorResponseUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -70,7 +72,11 @@ public class UserEditActivity extends AppCompatActivity {
                             textViewUserId.setText(user.getId() + "");
                             textViewStatus.setText(user.getStatus());
                             edtPhone.setHint(user.getPhone());
+                            edtPhone.setText(user.getPhone());
                             edtName.setHint(user.getName());
+                            edtName.setText(user.getName());
+                            edtPassword.setText(user.getPassword());
+                            edtConfirmPassword.setText(user.getPassword());
                             loadRoles();
                         }
                     },
@@ -199,6 +205,61 @@ public class UserEditActivity extends AppCompatActivity {
     }
 
     public void clickToUpdateInfo(View view) {
+        int id = selectedUserId;
+        String name = edtName.getText().toString();
+        String phone = edtPhone.getText().toString();
+        String password = edtPassword.getText().toString();
+        String confirmPassword = edtConfirmPassword.getText().toString();
+        String userName = selectedUser.getUsername();
+        int groupId = ((Group)spinnerGroup.getSelectedItem()).getId();
+        int roleId = ((Role)spinnerRole.getSelectedItem()).getId();
+        if(!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Confirm password not match password!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("id", id);
+            jsonBody.put("name", name);
+            jsonBody.put("phone", phone);
+            jsonBody.put("password", password);
+            jsonBody.put("groupId", groupId);
+            jsonBody.put("roleId", roleId);
+            jsonBody.put("userName", userName);
+            JsonObjectRequest objectRequest = new JsonObjectRequest(
+                    Request.Method.PUT,
+                    requestUrl + "users/update",
+                    jsonBody,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Gson gson = new Gson();
+                            try {
+                                String result = response.getString("status");
+                                if(result.equals("success")) {
+                                    UserEditActivity.this.onBackPressed();
+                                } else {
+                                    Toast.makeText(UserEditActivity.this, "Update failed", Toast.LENGTH_SHORT);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            ErrorResponseUtil.displayErrorMsg(UserEditActivity.this, error);
+                            error.printStackTrace();
+                        }
+                    }
+            );
+            requestQueue.add(objectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

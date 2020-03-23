@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,8 @@ import org.json.JSONObject;
 
 public class TaskDetailActivity extends AppCompatActivity {
     public static final String TASK_ID_STRING = "task_Id";
+    public static final String IS_IN_HISTORY_MODE = "isInHistory";
+    private boolean isInHistory;
     private String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/tasks/";
     private int taskId;
 
@@ -47,6 +50,8 @@ public class TaskDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_detail);
         taskId = Integer.parseInt(getIntent().getExtras().getString(TASK_ID_STRING));
+        isInHistory = getIntent().getExtras().getBoolean(IS_IN_HISTORY_MODE);
+
 
         txtId = findViewById(R.id.txtId);
         txtTitle = findViewById(R.id.txtTitle);
@@ -59,7 +64,10 @@ public class TaskDetailActivity extends AppCompatActivity {
         txtStatus = findViewById(R.id.txtStatus);
         btnConfirmDone = findViewById(R.id.btnConfirmDone);
         btnConfirmUndone = findViewById(R.id.btnConfirmUndone);
-
+        if(isInHistory) {
+            btnConfirmUndone.setVisibility(View.GONE);
+            btnConfirmDone.setVisibility(View.GONE);
+        }
         loadData(taskId);
 
     }

@@ -28,9 +28,10 @@
         android:id="@+id/txtAssigneeIdLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Assignee id:"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/edtAssigneeId" />
+        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
     <EditText
         android:id="@+id/edtAssigneeId"
@@ -40,29 +41,29 @@
         android:ems="10"
         android:hint="Enter the id of assignee"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+        app:layout_constraintStart_toStartOf="@+id/txtAssigneeIdLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssigneeIdLabel" />
 
     <TextView
         android:id="@+id/txtPasswordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Task content"
-        app:layout_constraintStart_toStartOf="@+id/txtAssigneeIdLabel"
-        app:layout_constraintTop_toTopOf="@+id/edtPassword" />
+        app:layout_constraintStart_toStartOf="@+id/edtAssigneeId"
+        app:layout_constraintTop_toBottomOf="@+id/edtAssigneeId" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Enter task content"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toEndOf="@+id/txtPasswordLabel"
-        app:layout_constraintTop_toBottomOf="@+id/edtAssigneeId" />
+        app:layout_constraintStart_toStartOf="@+id/txtPasswordLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordLabel" />
 
     <TextView
         android:id="@+id/txtDeadlineLabel"
@@ -77,15 +78,16 @@
         android:id="@+id/txtDeadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Deadline"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintStart_toEndOf="@+id/txtDeadlineLabel"
         app:layout_constraintTop_toTopOf="@+id/txtDeadlineLabel" />
 
     <Button
         android:id="@+id/btnSetDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:onClick="clickToSetDate"
         android:text="set deadline date"
         app:layout_constraintStart_toStartOf="@+id/txtPasswordLabel"
@@ -120,9 +122,10 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Title: "
         app:layout_constraintStart_toStartOf="@+id/txtUserIdLabel"
-        app:layout_constraintTop_toTopOf="@+id/edtName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUserIdLabel" />
 
     <EditText
         android:id="@+id/edtName"
@@ -132,9 +135,8 @@
         android:ems="10"
         android:inputType="text"
         android:text="Name"
-        app:layout_constraintStart_toStartOf="@+id/edtAssigneeId"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserId" />
-
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

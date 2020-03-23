@@ -53,6 +53,7 @@ public class RecycleViewAdapterTask extends RecyclerView.Adapter<RecycleViewAdap
             public void onClick(View v) {
                 Intent intent = new Intent(currentActivity, TaskDetailActivity.class);
                 intent.putExtra(TaskDetailActivity.TASK_ID_STRING, ((TextView)v.findViewById(R.id.txtId)).getText().toString());
+                intent.putExtra(TaskDetailActivity.IS_IN_HISTORY_MODE, false);
                 currentActivity.startActivity(intent);
             }
         });

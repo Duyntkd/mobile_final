@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.duyntkd.finalprojectmobile.util.ErrorResponseUtil;
 
 import org.json.JSONObject;
 
@@ -155,6 +156,7 @@ public class TaskAssignmentActivity extends AppCompatActivity implements DatePic
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             error.printStackTrace();
+                            ErrorResponseUtil.displayErrorMsg(TaskAssignmentActivity.this, error);
                         }
                     }
 

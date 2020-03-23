@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.duyntkd.finalprojectmobile.services.AuthenticationService;
+import com.duyntkd.finalprojectmobile.util.ErrorResponseUtil;
 
 import org.json.JSONObject;
 
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        TextView txtErrorMsg = (TextView)findViewById(R.id.txtErrorMsg);
+        TextView txtErrorMsg = (TextView) findViewById(R.id.txtErrorMsg);
         txtErrorMsg.setVisibility(View.GONE);
     }
 
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                     LoginActivity.this.startActivity(intent);
                                     finish();
                                 } else {
-                                    TextView txtErrorMsg = (TextView)LoginActivity.this.findViewById(R.id.txtErrorMsg);
+                                    TextView txtErrorMsg = (TextView) LoginActivity.this.findViewById(R.id.txtErrorMsg);
                                     txtErrorMsg.setText("Login failed please check your username and password!");
                                     txtErrorMsg.setVisibility(View.VISIBLE);
                                 }
@@ -99,20 +100,15 @@ public class LoginActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
+                            ErrorResponseUtil.displayErrorMsg(LoginActivity.this, error);
                         }
                     }
-
             );
             requestQueue.add(objectRequest);
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
-
-
-
-
 
 
 }

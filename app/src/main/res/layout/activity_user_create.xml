@@ -8,26 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UserEditActivity">
-
-        <TextView
-            android:id="@+id/txtUserIdLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="User id:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtUserId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="User id"
-            app:layout_constraintStart_toEndOf="@+id/txtUserIdLabel"
-            app:layout_constraintTop_toTopOf="@+id/txtUserIdLabel" />
+        tools:context=".UserCreateActivity">
 
         <TextView
             android:id="@+id/txtPasswordLabel"
@@ -55,14 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:onClick="clickToUpdateInfo"
-            android:text="Update info"
+            android:onClick="clickToCreateUser"
+            android:text="Create user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerGroup" />
 
         <TextView
             android:id="@+id/txtNotificaton"
@@ -81,8 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Name: "
-            app:layout_constraintStart_toStartOf="@+id/txtUserIdLabel"
-            app:layout_constraintTop_toBottomOf="@+id/txtUserIdLabel" />
+            app:layout_constraintStart_toStartOf="@+id/edtUsername"
+            app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
+
 
         <EditText
             android:id="@+id/edtName"
@@ -95,20 +77,6 @@
             app:layout_constraintStart_toStartOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-        <Button
-            android:id="@+id/btnDeactiveAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:onClick="clickToDeactiveAccount"
-            android:text="Deactive account"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnUpdateUser" />
-
-
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
@@ -120,7 +88,7 @@
 
         <EditText
             android:id="@+id/edtConfirmPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="213dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:ems="10"
@@ -128,19 +96,6 @@
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-        <Button
-            android:id="@+id/btnActiveAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:onClick="clickToActiveAccount"
-            android:text="Active account"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDeactiveAccount" />
 
         <Spinner
             android:id="@+id/spinnerRole"
@@ -176,24 +131,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <TextView
-            android:id="@+id/txtStatusLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="Status: "
-            app:layout_constraintEnd_toStartOf="@+id/txtStatus"
-            app:layout_constraintTop_toTopOf="@+id/txtStatus" />
-
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Status"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtUserIdLabel" />
-
-        <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,6 +149,28 @@
             app:layout_constraintStart_toStartOf="@+id/textView23"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Username"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Enter username"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

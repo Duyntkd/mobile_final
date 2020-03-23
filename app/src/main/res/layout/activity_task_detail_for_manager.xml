@@ -32,8 +32,8 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="33dp"
-            android:layout_height="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="16dp"
             android:text="Title: "
@@ -76,7 +76,7 @@
             android:layout_marginTop="16dp"
             android:text="Solution content: "
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
         <TextView
             android:id="@+id/txtSolutionDescription"
@@ -124,9 +124,10 @@
             android:id="@+id/txtEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:text="End date: "
-            app:layout_constraintStart_toStartOf="@+id/txtAssignee"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/txtStartDate" />
 
         <TextView
@@ -153,11 +154,10 @@
             android:id="@+id/txtAssignee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:text="Assignee name"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/txtEndDate" />
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/button2"
@@ -190,11 +190,10 @@
             android:id="@+id/txtAssigneeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="44dp"
+            android:layout_marginStart="15dp"
             android:text="Assignee id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEndDate" />
+            app:layout_constraintStart_toEndOf="@+id/textView22"
+            app:layout_constraintTop_toTopOf="@+id/textView22" />
 
         <Button
             android:id="@+id/button3"
@@ -225,6 +224,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Assignee id:"
+            app:layout_constraintStart_toStartOf="@+id/txtAssignee"
+            app:layout_constraintTop_toBottomOf="@+id/txtAssignee" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,6 +54,7 @@ public class RecycleViewAdapterTaskHistory extends RecyclerView.Adapter<RecycleV
             public void onClick(View v) {
                 Intent intent = new Intent(currentActivity, TaskDetailActivity.class);
                 intent.putExtra(TaskDetailActivity.TASK_ID_STRING, ((TextView)v.findViewById(R.id.txtId)).getText().toString());
+                intent.putExtra(TaskDetailActivity.IS_IN_HISTORY_MODE, true);
                 currentActivity.startActivity(intent);
             }
         });

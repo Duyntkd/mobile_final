@@ -20,30 +20,31 @@
         android:id="@+id/txtUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Task id"
-        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintStart_toEndOf="@+id/txtUserIdLabel"
         app:layout_constraintTop_toTopOf="@+id/txtUserIdLabel" />
 
     <TextView
         android:id="@+id/txtPasswordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Task content"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/edtPassword" />
+        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Enter task content"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toEndOf="@+id/txtPasswordLabel"
-        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+        app:layout_constraintStart_toStartOf="@+id/txtPasswordLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordLabel" />
 
     <TextView
         android:id="@+id/txtDeadlineLabel"
@@ -58,8 +59,9 @@
         android:id="@+id/txtDeadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Deadline"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintStart_toEndOf="@+id/txtDeadlineLabel"
         app:layout_constraintTop_toTopOf="@+id/txtDeadlineLabel" />
 
     <Button
@@ -69,7 +71,7 @@
         android:layout_marginTop="20dp"
         android:onClick="clickToSetDate"
         android:text="set deadline date"
-        app:layout_constraintStart_toStartOf="@+id/txtPasswordLabel"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <Button
@@ -101,20 +103,21 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Title: "
         app:layout_constraintStart_toStartOf="@+id/txtUserIdLabel"
-        app:layout_constraintTop_toTopOf="@+id/edtName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUserIdLabel" />
 
     <EditText
         android:id="@+id/edtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserId" />
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <Button
         android:id="@+id/btnDeactiveAccount"

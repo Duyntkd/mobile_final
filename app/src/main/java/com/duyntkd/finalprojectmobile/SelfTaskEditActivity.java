@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.duyntkd.finalprojectmobile.fragments.TaskManagementFragment;
 import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetail;
+import com.duyntkd.finalprojectmobile.util.ErrorResponseUtil;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -132,6 +133,7 @@ public class SelfTaskEditActivity extends AppCompatActivity implements DatePicke
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
+
                             }
 
                         }
@@ -140,6 +142,7 @@ public class SelfTaskEditActivity extends AppCompatActivity implements DatePicke
                         @Override
                         public void onErrorResponse(VolleyError error) {
                            error.printStackTrace();
+                            ErrorResponseUtil.displayErrorMsg(SelfTaskEditActivity.this, error);
                         }
                     }
 

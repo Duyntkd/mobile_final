@@ -1,6 +1,7 @@
 package com.duyntkd.finalprojectmobile.fragments.admin;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,7 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.duyntkd.finalprojectmobile.AbstractUserActivity;
+import com.duyntkd.finalprojectmobile.LoginActivity;
 import com.duyntkd.finalprojectmobile.R;
+import com.duyntkd.finalprojectmobile.UserCreateActivity;
 import com.duyntkd.finalprojectmobile.models.groups.Group;
 import com.duyntkd.finalprojectmobile.models.roles.Role;
 import com.duyntkd.finalprojectmobile.models.tasks.SelfTaskInfoForList;
@@ -43,11 +47,17 @@ public class ManageUserFragment extends Fragment {
     private RecyclerView recycle_view_users;
     private RecycleViewAdapterUser adapter;
     private View rootView;
+    private Button btnCreateUser;
 
     public ManageUserFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        loadData();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +66,17 @@ public class ManageUserFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_manage_user, container,
                 false);
         recycle_view_users = (RecyclerView) rootView.findViewById(R.id.list_users);
-        loadData();
+        btnCreateUser = rootView.findViewById(R.id.btnCreateNewUser);
+        btnCreateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AbstractUserActivity currentActivity = (AbstractUserActivity) getActivity();
+                String userId = currentActivity.getUserId() + "";
+                Intent intent = new Intent(getActivity(), UserCreateActivity.class);
+                intent.putExtra(LoginActivity.USER_ID_TEXT, userId);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 
