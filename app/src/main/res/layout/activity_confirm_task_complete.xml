@@ -52,12 +52,7 @@
         android:visibility="gone"
         android:id="@+id/edtScore"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload confirm report image"
-        android:layout_marginTop="20dp"
-        android:onClick="clickToUploadImage"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

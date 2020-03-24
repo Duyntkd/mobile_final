@@ -160,7 +160,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAccepTask"
             android:layout_width="408dp"
             android:layout_height="61dp"
             android:layout_marginStart="15dp"
@@ -174,7 +174,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtSolutionDescription" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnDenyTask"
             android:layout_width="408dp"
             android:layout_height="52dp"
             android:layout_marginStart="15dp"
@@ -184,7 +184,7 @@
             android:text="Deny task"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAccepTask" />
 
         <TextView
             android:id="@+id/txtAssigneeId"
@@ -207,7 +207,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/btnDenyTask" />
 
         <Button
             android:id="@+id/button4"
@@ -233,6 +233,36 @@
             android:text="Assignee id:"
             app:layout_constraintStart_toStartOf="@+id/txtAssignee"
             app:layout_constraintTop_toBottomOf="@+id/txtAssignee" />
+
+        <Button
+            android:id="@+id/btnApproveTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:text="Approve task"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDenyTask"
+            android:onClick="clickToApproveTask"
+            android:visibility="gone"
+          />
+
+        <Button
+            android:id="@+id/btnDeclineTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:text="Decline task"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnApproveTask"
+            android:onClick="clickToDeclineTask"
+            android:visibility="gone"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

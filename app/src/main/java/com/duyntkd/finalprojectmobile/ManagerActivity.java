@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.duyntkd.finalprojectmobile.fragments.PendingTaskManagementFragment;
 import com.duyntkd.finalprojectmobile.fragments.manager.ManageGroupTaskFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -49,13 +50,15 @@ public class ManagerActivity extends AbstractUserActivity {
             switch (position) {
                 case 0:
                     return new ManageGroupTaskFragment();
+                case 1:
+                    return new PendingTaskManagementFragment();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
 
         @Nullable
@@ -64,6 +67,8 @@ public class ManagerActivity extends AbstractUserActivity {
             switch (position) {
                 case 0:
                     return "Manage group task";
+                case 1:
+                    return "Manage pending task";
             }
             return super.getPageTitle(position);
         }

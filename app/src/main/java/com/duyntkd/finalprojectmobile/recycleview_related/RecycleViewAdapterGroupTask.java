@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.duyntkd.finalprojectmobile.ManagerActivity;
 import com.duyntkd.finalprojectmobile.R;
 import com.duyntkd.finalprojectmobile.TaskDetailForManagerActivity;
 import com.duyntkd.finalprojectmobile.models.tasks.GroupTaskInfoForList;
+import com.duyntkd.finalprojectmobile.models.tasks.TaskForDetailManager;
 
 import java.util.ArrayList;
 
@@ -21,10 +23,12 @@ public class RecycleViewAdapterGroupTask extends RecyclerView.Adapter<RecycleVie
 
     private ArrayList<GroupTaskInfoForList> taskList;
     private Activity currentActivity;
+    private boolean isPendingTasks;
 
-    public RecycleViewAdapterGroupTask(ArrayList<GroupTaskInfoForList> taskList, Activity currentActivity) {
+    public RecycleViewAdapterGroupTask(ArrayList<GroupTaskInfoForList> taskList, Activity currentActivity, boolean isPendingTasks) {
         this.taskList = taskList;
         this.currentActivity = currentActivity;
+        this.isPendingTasks = isPendingTasks;
     }
 
     @NonNull
@@ -53,8 +57,15 @@ public class RecycleViewAdapterGroupTask extends RecyclerView.Adapter<RecycleVie
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ManagerActivity managerActivity = (ManagerActivity)currentActivity;
                 Intent intent = new Intent(currentActivity, TaskDetailForManagerActivity.class);
                 intent.putExtra(TaskDetailForManagerActivity.TASK_ID_STRING, ((TextView)v.findViewById(R.id.txtId)).getText().toString());
+                if(isPendingTasks) {
+                    intent.putExtra(TaskDetailForManagerActivity.TASK_PENDING_STATUS_STRING, true);
+                } else {
+                    intent.putExtra(TaskDetailForManagerActivity.TASK_PENDING_STATUS_STRING, false);
+                }
+                intent.putExtra(TaskDetailForManagerActivity.USER_ID_STRING, managerActivity.getUserId());
                 currentActivity.startActivity(intent);
             }
         });
