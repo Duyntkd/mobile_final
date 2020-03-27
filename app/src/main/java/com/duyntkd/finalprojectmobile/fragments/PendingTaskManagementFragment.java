@@ -39,6 +39,7 @@ public class PendingTaskManagementFragment extends Fragment {
     private String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/tasks/group/pending";
     private ArrayList<GroupTaskInfoForList> resultForCurrentTasks;
     private View rootView;
+    private Button btnCreateNewTask;
 
     public PendingTaskManagementFragment() {
         // Required empty public constructor
@@ -94,6 +95,8 @@ public class PendingTaskManagementFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_manage_group_task, container, false);
+        btnCreateNewTask = rootView.findViewById(R.id.btnCreateNewTask);
+        btnCreateNewTask.setVisibility(View.GONE);
         return rootView;
     }
 

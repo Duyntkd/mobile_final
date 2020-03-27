@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,34 +11,29 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.duyntkd.finalprojectmobile.AbstractUserActivity;
+import com.duyntkd.finalprojectmobile.GroupEditActivity;
 import com.duyntkd.finalprojectmobile.LoginActivity;
 import com.duyntkd.finalprojectmobile.R;
-import com.duyntkd.finalprojectmobile.UserEditActivity;
-import com.duyntkd.finalprojectmobile.fragments.admin.ManageUserFragment;
-import com.duyntkd.finalprojectmobile.models.users.User;
+import com.duyntkd.finalprojectmobile.fragments.admin.ManageGroupFragment;
+import com.duyntkd.finalprojectmobile.models.groups.Group;
 
 import java.util.ArrayList;
 
-public class RecycleViewAdapterUser extends RecyclerView.Adapter<RecycleViewAdapterUser.ViewHolder> {
-    private ArrayList<User> usersList;
+public class RecycleViewAdapterGroup extends RecyclerView.Adapter<RecycleViewAdapterGroup.ViewHolder>{
+    private ArrayList<Group> groupList;
     private AbstractUserActivity currentActivity;
     private ArrayList<ViewHolder> viewHolders = new ArrayList<>();
 
-    public ArrayList<ViewHolder> getViewHolders() {
-        return viewHolders;
-    }
-
-    public RecycleViewAdapterUser(ArrayList<User> usersList, AbstractUserActivity currentActivity) {
-        this.usersList = usersList;
+    public RecycleViewAdapterGroup(ArrayList<Group> groupList, AbstractUserActivity currentActivity) {
+        this.groupList = groupList;
         this.currentActivity = currentActivity;
-
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycle_item_user, parent, false);
+                .inflate(R.layout.recycle_item_group, parent, false);
         return new ViewHolder(cardView);
     }
 
@@ -48,35 +42,24 @@ public class RecycleViewAdapterUser extends RecyclerView.Adapter<RecycleViewAdap
         viewHolders.add(holder);
         CardView cardView = holder.cardView;
         TextView txtId = cardView.findViewById(R.id.txtId);
-        TextView txtRoleName = cardView.findViewById(R.id.txtRoleName);
         TextView txtGroupName = cardView.findViewById(R.id.txtGroupName);
-        TextView txtName = cardView.findViewById(R.id.txtName);
-        TextView txtUsername = cardView.findViewById(R.id.txtUsername);
-
-        txtId.setText(usersList.get(position).getId() + "");
-        txtName.setText(usersList.get(position).getName());
-        txtUsername.setText(usersList.get(position).getUsername());
-        txtRoleName.setText(usersList.get(position).getRoleName());
-        txtGroupName.setText(usersList.get(position).getGroupName());
-
-
+        txtId.setText(groupList.get(position).getId() + "");
+        txtGroupName.setText(groupList.get(position).getName());
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentActivity, UserEditActivity.class);
-                intent.putExtra(ManageUserFragment.SELECTED_USER_ID_STRING, Integer.parseInt(((TextView)v.findViewById(R.id.txtId)).getText().toString()));
+                Intent intent = new Intent(currentActivity, GroupEditActivity.class);
+                intent.putExtra(ManageGroupFragment.SELECTED_GROUP_ID_STRING, Integer.parseInt(((TextView)v.findViewById(R.id.txtId)).getText().toString()));
                 intent.putExtra(LoginActivity.USER_ID_TEXT, currentActivity.getUserId());
+                intent.putExtra(ManageGroupFragment.SELECTED_GROUP_NAME_STRING, ((TextView)v.findViewById(R.id.txtGroupName)).getText().toString());
                 currentActivity.startActivity(intent);
             }
         });
-
     }
-
-
 
     @Override
     public int getItemCount() {
-        return usersList.size();
+        return groupList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -88,5 +71,4 @@ public class RecycleViewAdapterUser extends RecyclerView.Adapter<RecycleViewAdap
             cardView = (CardView)itemView;
         }
     }
-
 }

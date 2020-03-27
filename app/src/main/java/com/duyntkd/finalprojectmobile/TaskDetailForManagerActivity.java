@@ -68,6 +68,10 @@ public class TaskDetailForManagerActivity extends AppCompatActivity {
         txtAssigneeName = findViewById(R.id.txtAssignee);
         txtEndDate = findViewById(R.id.txtEndDate);
         txtStartDate = findViewById(R.id.txtStartDate);
+        btnAccepTask = findViewById(R.id.btnAccepTask);
+        btnDenyTask = findViewById(R.id.btnDenyTask);
+        btnDeclineTask = findViewById(R.id.btnDeclineTask);
+        btnApproveTask = findViewById(R.id.btnApproveTask);
 
         if(isPending) {
             btnAccepTask.setVisibility(View.GONE);

@@ -32,12 +32,14 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserEditActivity extends AppCompatActivity {
     private int userId;
     private int selectedUserId;
     private String requestUrl = "https://mobilefinalprojectserver.azurewebsites.net/api/";
     private User selectedUser;
+    private List<String> statusList;
 
     private TextView textViewStatus;
     private TextView textViewUserId;
@@ -47,6 +49,7 @@ public class UserEditActivity extends AppCompatActivity {
     private EditText edtPhone;
     private Spinner spinnerRole;
     private Spinner spinnerGroup;
+    private Spinner spinnerStatus;
 
 
     @Override
@@ -77,6 +80,7 @@ public class UserEditActivity extends AppCompatActivity {
                             edtName.setText(user.getName());
                             edtPassword.setText(user.getPassword());
                             edtConfirmPassword.setText(user.getPassword());
+                            spinnerStatus.setSelection(statusList.indexOf(user.getStatus()));
                             loadRoles();
                         }
                     },
@@ -192,16 +196,14 @@ public class UserEditActivity extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         spinnerGroup = findViewById(R.id.spinnerGroup);
         spinnerRole = findViewById(R.id.spinnerRole);
-
-
-    }
-
-    public void clickToActiveAccount(View view) {
-
-    }
-
-    public void clickToDeactiveAccount(View view) {
-
+        spinnerStatus = findViewById(R.id.spinnerStatus);
+        statusList = new ArrayList<>();
+        statusList.add("active");
+        statusList.add("deactive");
+        ArrayAdapter<String> statusSpinerAdapter = new ArrayAdapter<String>
+                (UserEditActivity.this.getApplicationContext(),
+                        android.R.layout.simple_spinner_item, statusList);
+        spinnerStatus.setAdapter(statusSpinerAdapter);
     }
 
     public void clickToUpdateInfo(View view) {
@@ -211,9 +213,10 @@ public class UserEditActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString();
         String confirmPassword = edtConfirmPassword.getText().toString();
         String userName = selectedUser.getUsername();
-        int groupId = ((Group)spinnerGroup.getSelectedItem()).getId();
-        int roleId = ((Role)spinnerRole.getSelectedItem()).getId();
-        if(!password.equals(confirmPassword)) {
+        int groupId = ((Group) spinnerGroup.getSelectedItem()).getId();
+        int roleId = ((Role) spinnerRole.getSelectedItem()).getId();
+        String status = spinnerStatus.getSelectedItem().toString();
+        if (!password.equals(confirmPassword)) {
             Toast.makeText(this, "Confirm password not match password!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -228,6 +231,7 @@ public class UserEditActivity extends AppCompatActivity {
             jsonBody.put("groupId", groupId);
             jsonBody.put("roleId", roleId);
             jsonBody.put("userName", userName);
+            jsonBody.put("status", status);
             JsonObjectRequest objectRequest = new JsonObjectRequest(
                     Request.Method.PUT,
                     requestUrl + "users/update",
@@ -238,7 +242,7 @@ public class UserEditActivity extends AppCompatActivity {
                             Gson gson = new Gson();
                             try {
                                 String result = response.getString("status");
-                                if(result.equals("success")) {
+                                if (result.equals("success")) {
                                     UserEditActivity.this.onBackPressed();
                                 } else {
                                     Toast.makeText(UserEditActivity.this, "Update failed", Toast.LENGTH_SHORT);

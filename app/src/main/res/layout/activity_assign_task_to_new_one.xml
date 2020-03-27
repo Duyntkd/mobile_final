@@ -7,7 +7,7 @@
     tools:context=".TaskAssignmentActivity">
 
     <TextView
-        android:id="@+id/txtUserIdLabel"
+        android:id="@+id/txtTaskIdLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,12 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtUserId"
+        android:id="@+id/txtTaskId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Task id"
-        app:layout_constraintStart_toStartOf="@+id/edtAssigneeId"
-        app:layout_constraintTop_toTopOf="@+id/txtUserIdLabel" />
+        app:layout_constraintStart_toEndOf="@+id/txtTaskIdLabel"
+        app:layout_constraintTop_toTopOf="@+id/txtTaskIdLabel" />
 
     <TextView
         android:id="@+id/txtAssigneeIdLabel"
@@ -33,13 +34,12 @@
         app:layout_constraintStart_toStartOf="@+id/edtName"
         app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
-    <EditText
-        android:id="@+id/edtAssigneeId"
+    <Spinner
+        android:id="@+id/spinnerAssignee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Enter the id of assignee"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/txtAssigneeIdLabel"
         app:layout_constraintTop_toBottomOf="@+id/txtAssigneeIdLabel" />
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Task content"
-        app:layout_constraintStart_toStartOf="@+id/edtAssigneeId"
-        app:layout_constraintTop_toBottomOf="@+id/edtAssigneeId" />
+        app:layout_constraintStart_toStartOf="@+id/spinnerAssignee"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAssignee" />
 
     <EditText
         android:id="@+id/edtPassword"
@@ -124,8 +124,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Title: "
-        app:layout_constraintStart_toStartOf="@+id/txtUserIdLabel"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserIdLabel" />
+        app:layout_constraintStart_toStartOf="@+id/txtTaskIdLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtTaskIdLabel" />
 
     <EditText
         android:id="@+id/edtName"

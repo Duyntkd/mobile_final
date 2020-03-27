@@ -1,5 +1,7 @@
 package com.duyntkd.finalprojectmobile.models.users;
 
+import androidx.annotation.NonNull;
+
 public class User {
     private int id;
     private String username;
@@ -103,5 +105,11 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return username + "-" + name;
     }
 }

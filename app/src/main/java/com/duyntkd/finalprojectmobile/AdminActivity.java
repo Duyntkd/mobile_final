@@ -10,6 +10,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.duyntkd.finalprojectmobile.fragments.ProfileFragment;
+import com.duyntkd.finalprojectmobile.fragments.admin.ManageGroupFragment;
 import com.duyntkd.finalprojectmobile.fragments.admin.ManageUserFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -45,13 +47,15 @@ public class AdminActivity extends AbstractUserActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0: return new ManageUserFragment();
+                case 2: return new ProfileFragment();
+                case 1: return new ManageGroupFragment();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return 3;
         }
 
         @Nullable
@@ -59,6 +63,8 @@ public class AdminActivity extends AbstractUserActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0: return "Manage user";
+                case 2: return "Profile";
+                case 1: return "Manage group";
             }
             return super.getPageTitle(position);
         }
